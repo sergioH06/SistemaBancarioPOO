@@ -1,5 +1,8 @@
 package contas;
 
+import clientes.PessoaJuridica;
+import clientes.PessoaFisica;
+
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.ChronoUnit;
@@ -120,7 +123,7 @@ public class ContaPoupanca extends Conta{
         
         System.out.printf("Saldo: R$ %.2f\n", this.saldo);
         System.out.println("Data de Criação: " + this.dataCriacao.format(getFormatter()));
-        System.out.printf("Taxa de Rendimento Mensal: %.1f%%\n", TAXA_RENDIMENTO_MENSAL * 100);
+        System.out.printf("Taxa de Rendimento Mensal: %.1f%%\n", TAXA_RENDIMENTO_MENSAL * 100);
     }
 
 }

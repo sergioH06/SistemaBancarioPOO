@@ -1,6 +1,11 @@
 package clientes;
 
+import utilidades.ValidadorCNPJ;
+import utilidades.ValidadorCPF;
+
 import java.util.Scanner;
+
+
 
 public class CadastroPessoaJuridica {
     public static PessoaJuridica CadastrarPessoaJuridica(Scanner scanner){

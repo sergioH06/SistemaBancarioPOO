@@ -1,6 +1,10 @@
 package clientes;
 
+import utilidades.ValidadorCPF;
+
 import java.util.Scanner;
+
+
 
 public class CadastroPessoaFisica {
     public static PessoaFisica CadastrarPessoaFisica(Scanner scanner){
