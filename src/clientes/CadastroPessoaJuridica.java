@@ -11,7 +11,7 @@ public class CadastroPessoaJuridica {
     public static PessoaJuridica CadastrarPessoaJuridica(Scanner scanner){
 
         System.out.println("===== CADASTRO DE PESSOA JURÍDICA =====");
-        // Entrada dos dados pessoais
+        // entrada dos dados pessoais (pessoa jurídica)
         System.out.print("Responsável: ");
         String nome = scanner.nextLine();
 

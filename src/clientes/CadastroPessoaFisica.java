@@ -10,7 +10,7 @@ public class CadastroPessoaFisica {
     public static PessoaFisica CadastrarPessoaFisica(Scanner scanner){
 
         System.out.println("===== CADASTRO DE PESSOA FÍSICA =====");
-        // Entrada dos dados pessoais
+        // entrada dos dados pessoais (pessoa física)
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
 

@@ -11,7 +11,7 @@ import java.time.temporal.TemporalAdjusters;
 
 public class ContaCorrente extends Conta {
 
-    //Atributos
+    //atributos
     private final double TAXA_MANUTENCAO_MENSAL = 10.00;
     private final double TAXA_POR_TRANSACAO_EXTRA = 2.50;
     private final int TRANSACOES_GRATUITAS_MES = 20;
@@ -22,7 +22,7 @@ public class ContaCorrente extends Conta {
     private int ultimoAnoCobrancaTaxaManutencao;
     private int diaAniversarioCobranca;
 
-    //Construtor para Pessoa Física
+    //construtor para pessoa física
     public ContaCorrente(PessoaFisica titular, double saldoInicial, double limiteChequeEspecial, String email, String senha){
         super(titular, saldoInicial, email, senha);
         this.limiteChequeEspecial = limiteChequeEspecial;
@@ -33,7 +33,7 @@ public class ContaCorrente extends Conta {
         System.out.printf("Limite de Cheque Especial: R$ %.2f\n", this.limiteChequeEspecial);
     }
 
-    //Construtor para Pessoa Jurídica
+    //construtor para pessoa jurídica
     public ContaCorrente(PessoaJuridica titular, double saldoInicial, double limiteChequeEspecial, String email, String senha){
         super(titular, saldoInicial, email, senha);
         this.limiteChequeEspecial = limiteChequeEspecial;
@@ -44,17 +44,17 @@ public class ContaCorrente extends Conta {
         System.out.printf("Limite de Cheque Especial: R$ %.2f\n", this.limiteChequeEspecial);
     }
 
-    //Getters
+    //getters necessários
     public double getLimiteChequeEspecial() {
         return limiteChequeEspecial;
     }
 
-    //Setters
+    //setters necessários
     public void setLimiteChequeEspecial(double limiteChequeEspecial) {
         this.limiteChequeEspecial = limiteChequeEspecial;
     }
 
-    //Método de Cobrança de Taxa de Manutenção Mensal
+    //método de cobrança de taxa de manutenção mensal
     public void cobrarTaxaManutencaoMensal(){
         LocalDate dataAtualSimulada = LocalDate.now();
         int mesAtualSimulado = dataAtualSimulada.getMonthValue();
@@ -62,18 +62,18 @@ public class ContaCorrente extends Conta {
         LocalDate ultimoDiaDoMes = dataAtualSimulada.with(TemporalAdjusters.lastDayOfMonth());
         LocalDate dataCobrancaEsteMes;
         if(this.ultimoAnoCobrancaTaxaManutencao < anoAtualSimulado || (anoAtualSimulado == this.ultimoAnoCobrancaTaxaManutencao && this.ultimoMesCobrancaTaxaManutencao < mesAtualSimulado)){
-            //Cria a data de cobrança deste mês
+            //cria a data de cobrança deste mês
             if(this.dataCriacao.getDayOfMonth() > ultimoDiaDoMes.getDayOfMonth()){
                 dataCobrancaEsteMes = dataAtualSimulada.with(TemporalAdjusters.lastDayOfMonth());
             } else {
                 dataCobrancaEsteMes = LocalDate.of(anoAtualSimulado, mesAtualSimulado, diaAniversarioCobranca);
             }
-            //Registra a última data de cobrança
+            //registra a última data de cobrança
             LocalDate ultimaDataDeCobranca = LocalDate.of(this.ultimoAnoCobrancaTaxaManutencao, this.ultimoMesCobrancaTaxaManutencao, this.diaAniversarioCobranca);
             if (this.diaAniversarioCobranca > ultimaDataDeCobranca.with(TemporalAdjusters.lastDayOfMonth()).getDayOfMonth()) {
                 ultimaDataDeCobranca = ultimaDataDeCobranca.with(TemporalAdjusters.lastDayOfMonth());
             }
-            //Calcula a diferença de meses entre a data da última aplicação e a data de aplicação para esse mês
+            //calcula a diferença de meses entre a data da última aplicação e a data de aplicação para esse mês
             long quantidadeDeMeses = ChronoUnit.MONTHS.between(ultimaDataDeCobranca, dataCobrancaEsteMes);
 
             if(quantidadeDeMeses == 1){
@@ -105,7 +105,7 @@ public class ContaCorrente extends Conta {
         }
     }
 
-    //Sobrescrição do Método de Saque
+    //sobrescrição do método de saque
     @Override
     public void sacar(double valor){
         cobrarTaxaManutencaoMensal();
@@ -138,13 +138,14 @@ public class ContaCorrente extends Conta {
         }    
     }
 
+    //sobrescrição do método de depósito
     @Override
     public void depositar(double valor){
         super.depositar(valor);
         cobrarTaxaManutencaoMensal();
     }
     
-    //Definição do Método de Geração de Extrato
+    //definição do método de geração de extrato
     @Override
     public void gerarExtrato(){
         System.out.println("\n===== EXTRATO CONTA CORRENTE ===== \n");

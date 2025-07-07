@@ -7,6 +7,29 @@ O foco do projeto é a aplicação e consolidação de conceitos de Programaçã
 ## Como compilar e rodar:
 1. Certifique-se de ter o Java Development Kit (JDK) 8 ou superior instalado na sua máquina. 
 2. Atente-se à estrutura de pastas. Salve os arquivos em uma mesma pasta e compile-a.
+```
+/
+|___src/
+    |---app/
+        |---Main.java
+    |---cliente/
+    |   |---CadastroPessoaFisica.java
+    |   |---CadastroPessoaJuridica.java
+    |   |---Cliente.java
+    |   |---PessoaFisica.java
+    |   |---PessoaJuridica.java
+    |---contas/
+    |   |---Conta.java
+    |   |---ContaCorrente.java
+    |   |---ContaPoupanca.java
+    |---servicos/
+    |   |---Transferir.java
+    |---utilidades/
+    |   |---ValidadorCNPJ.java
+    |   |---ValidadorCPF.java
+    
+                                                                                                
+```
 3. Abra o terminal (ou prompt de comando) na pasta onde estão seus arquivos .java e compile-os:
 ```bash
     javac *.java

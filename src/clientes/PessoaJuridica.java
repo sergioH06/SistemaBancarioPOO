@@ -5,7 +5,7 @@ public class PessoaJuridica extends Cliente{
     protected String CNPJ;
     protected String RazaoSocial;
 
-    //Construtor
+    //construtor
     public PessoaJuridica(String NomePessoa, String Nascimento, String CPF, String Email, String Senha, String Telefone,
             String Estado, String Cidade, String Bairro, String Rua, int Numero, String Complemento, String CEP, String CNPJ, String RazaoSocial) {
         super(NomePessoa, Nascimento, CPF, Email, Senha, Telefone, Estado, Cidade, Bairro, Rua, Numero, Complemento, CEP);
@@ -13,7 +13,7 @@ public class PessoaJuridica extends Cliente{
         this.RazaoSocial = RazaoSocial;
     }
 
-    //Getters
+    //getters possivelmente necessários
     public String getNomePessoa(){
         return NomePessoa;
     }

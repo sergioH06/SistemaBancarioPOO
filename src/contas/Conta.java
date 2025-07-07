@@ -7,14 +7,15 @@ import java.util.Random;
 
 public abstract class Conta {
 
-    //Formatador de Data
+    //formatador de data
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     
-    //Getter Formatador
+    //getter para o formatador
     public static DateTimeFormatter getFormatter() {
         return FORMATTER;
     }
-
+    
+    //atributos
     protected String numeroDaConta;
     protected  final String agencia = "1430";
     protected final String codigoBanco = "345";
@@ -37,7 +38,7 @@ public abstract class Conta {
         this.senha = senha;
     }
 
-    //Getters Padrão
+    //getters padrão
     public Object getTitular(){
         return titular;
     }
@@ -62,7 +63,7 @@ public abstract class Conta {
         return senha;
     }
 
-    //Setters
+    //setters necessários
     public void setSaldo(double saldo){
         this.saldo = saldo;
     }
@@ -87,7 +88,7 @@ public abstract class Conta {
         return numeroContaGerar + "-" + digitoVerificador;
     }
 
-    //Método de Depósito
+    //método de depósito
     public void depositar(double valor){
         if(valor > 0){
             LocalDateTime agora = LocalDateTime.now();
@@ -100,7 +101,7 @@ public abstract class Conta {
         }
     }
 
-    //Método de Saque
+    //método de saque
     public void sacar(double valor){
         if(valor > 0 && this.saldo >= valor){
             LocalDateTime agora = LocalDateTime.now();
@@ -113,7 +114,7 @@ public abstract class Conta {
         }
     }
 
-    //Método Abstrato de Extrato
+    //método abstrato de gerar extrato
     public abstract void gerarExtrato();
 }
 

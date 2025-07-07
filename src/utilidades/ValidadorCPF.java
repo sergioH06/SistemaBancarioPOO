@@ -2,7 +2,7 @@ package utilidades;
 
 public class ValidadorCPF {
 
-    // Método para validar CPF
+    // método para validar CPF
     public static boolean validarCPF(String cpf) {
         String cpfDigitos = cpf.replaceAll("[^0-9]", "");
 
@@ -12,7 +12,7 @@ public class ValidadorCPF {
             return false;
         }
 
-        // Evita CPFs com todos os dígitos iguais
+        // evita CPFs com todos os dígitos iguais
         if (cpfDigitos.matches("(\\d)\\1{10}")) {
             System.out.println("CPF inválido: Não pode ter todos os dígitos iguais.");
             return false;

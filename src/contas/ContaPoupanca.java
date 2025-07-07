@@ -9,13 +9,13 @@ import java.time.temporal.ChronoUnit;
 
 public class ContaPoupanca extends Conta{
 
-    //Atributos
+    //atributos
     private final double TAXA_RENDIMENTO_MENSAL = 0.005;
     private int diaAniversarioRendimento; 
     private int ultimoMesRendimentoAplicado;  
     private int ultimoAnoRendimentoAplicado; 
 
-    //Construtor para Pessoa Física
+    //construtor para pessoa física
     public ContaPoupanca(PessoaFisica titular, double saldoInicial, String email, String senha){
         super(titular, saldoInicial, email, senha);
         this.diaAniversarioRendimento = this.dataCriacao.getDayOfMonth(); 
@@ -24,6 +24,7 @@ public class ContaPoupanca extends Conta{
         System.out.println("Tipo de Conta: Poupança\n");
     }
 
+    //construtor para pessoa jurídica
     public ContaPoupanca(PessoaJuridica titular, double saldoInicial, String email, String senha){
         super(titular, saldoInicial, email, senha);
         this.diaAniversarioRendimento = this.dataCriacao.getDayOfMonth();
@@ -32,7 +33,7 @@ public class ContaPoupanca extends Conta{
         System.out.println("Tipo de Conta: Poupança\n");
     }
 
-    //Método de Aplicação de Rendimento Mensal
+    //método de aplicação de rendimento mensal
     public void aplicarRendimento(){
 
         LocalDate dataAtualSimulada = LocalDate.now();
@@ -42,26 +43,26 @@ public class ContaPoupanca extends Conta{
         LocalDate dataParaAplicacaoEsteMes;
         
         /**
-         * A lógica exerce uma verificação inical que avalia se o mês ou o ano passou para dar continuidade ao código. Depois, avalia o dia de dataAtualSimulada e compara com a data de aniversário da conta, avaliando dois casos:
+         * a lógica exerce uma verificação inical que avalia se o mês ou o ano passou para dar continuidade ao código. Depois, avalia o dia de dataAtualSimulada e compara com a data de aniversário da conta, avaliando dois casos:
          * 1. Conta criada em um dia inexistente no mês (por exemplo, 30 de fevereiro)
          * 2. Conta criada em um dia existente no mês
          */
         
-        //Verifica se o ano passou ou o mês passou
+        //verifica se o ano passou ou o mês passou
         if(this.ultimoAnoRendimentoAplicado < anoAtualSimulado || (anoAtualSimulado == this.ultimoAnoRendimentoAplicado && 
         this.ultimoMesRendimentoAplicado < mesAtualSimulado)){
-            //Cria a data de aplicação para esse mês
+            //cria a data de aplicação para esse mês
             if(this.dataCriacao.getDayOfMonth() > ultimoDiaDoMes.getDayOfMonth()){
                 dataParaAplicacaoEsteMes = dataAtualSimulada.with(TemporalAdjusters.lastDayOfMonth());
             } else {
                 dataParaAplicacaoEsteMes = LocalDate.of(anoAtualSimulado, mesAtualSimulado, diaAniversarioRendimento);
             }
-            //Registra a última data de aplicação do rendimento
+            //registra a última data de aplicação do rendimento
             LocalDate ultimaDataDeAplicacaoPrevista = LocalDate.of(this.ultimoAnoRendimentoAplicado, this.ultimoMesRendimentoAplicado, this.diaAniversarioRendimento);
             if (this.diaAniversarioRendimento > ultimaDataDeAplicacaoPrevista.with(TemporalAdjusters.lastDayOfMonth()).getDayOfMonth()) {
                 ultimaDataDeAplicacaoPrevista = ultimaDataDeAplicacaoPrevista.with(TemporalAdjusters.lastDayOfMonth());
             }
-            //Calcula a diferença de meses entre a data da última aplicação e a data de aplicação para esse mês
+            //calcula a diferença de meses entre a data da última aplicação e a data de aplicação para esse mês
             long quantidadeDeMeses = ChronoUnit.MONTHS.between(ultimaDataDeAplicacaoPrevista, dataParaAplicacaoEsteMes);
             if(quantidadeDeMeses == 1){
                 if(dataAtualSimulada.isAfter(dataParaAplicacaoEsteMes) || dataAtualSimulada.isEqual(dataParaAplicacaoEsteMes)){
@@ -90,21 +91,21 @@ public class ContaPoupanca extends Conta{
         }
     }
     
-    //Sobrescrição do Método de Saque
+    //sobrescrição do método de saque
     @Override
     public void sacar(double valor){
         aplicarRendimento();
         super.sacar(valor);
     }
 
-    //Sobrescrição do Método de Depósito
+    //sobrescrição do método de depósito
     @Override
     public void depositar(double valor){
         aplicarRendimento();
         super.depositar(valor);
     }
 
-    //Definição do Método de Geração de Extrato
+    //definição do método de geração de extrato
     @Override
     public void gerarExtrato(){
         System.out.println("\n===== EXTRATO CONTA POUPANÇA ===== \n");

@@ -45,7 +45,7 @@ public class Main {
         scanner.close();
     }
 
-    //Função para exibir o Menu Principal
+    //método para exibir o menu principal
     public static void exibirMenuPrincipal() {
         System.out.println("\n===== MENU PRINCIPAL =====");
         System.out.println("[1] Criar Conta");
@@ -54,7 +54,7 @@ public class Main {
         System.out.print("Escolha uma opção: ");
     }
 
-    //Função para exibir os Tipos de Cliente
+    //método para exibir os tipos de cliente
     public static void exibirTiposDeCliente() {
         System.out.println("\n===== TIPOS DE CLIENTE =====");
         System.out.println("[1] Pessoa Física");
@@ -62,7 +62,7 @@ public class Main {
         System.out.print("Escolha uma opção: ");
     }
 
-    //Função para exibir Tipos de Conta
+    //método para exibir os tipos de conta
     public static void exibirTiposDeConta() {
         System.out.println("\n===== TIPOS DE CONTA =====");
         System.out.println("[1] Conta Corrente");
@@ -70,7 +70,7 @@ public class Main {
         System.out.print("Escolha uma opção: ");
     }
 
-    //Função para exibir o Menu de Operações da Conta
+    //método para exibir o menu de operações
     public static void exibirMenuOperacoesConta(String numeroConta) {
         System.out.println("\n===== OPERAÇÕES DA CONTA " + numeroConta + " =====");
         System.out.println("1. Consultar Extrato");
@@ -81,7 +81,7 @@ public class Main {
         System.out.print("Escolha uma opção: ");
     }
 
-    //Função auxiliar de entrada de dados para tratar exceções
+    //método auxiliar de entrada de dados (trata exceções)
     public static int escolherOpcao() {
         try {
             int opcao = scanner.nextInt();
@@ -94,12 +94,12 @@ public class Main {
         }
     }
 
-    //Função para Criar Conta
+    //método para crirar conta
     public static void criarConta() {
         exibirTiposDeCliente();
         int tipoDeCliente = escolherOpcao();
 
-        //Cria um objeto "novoCliente" de acordo com o Tipo de Cliente
+        //cria um objeto "novoCliente" de acordo com o tipo de cliente
         Cliente novoCliente = null;
         switch (tipoDeCliente) {
             case 1:
@@ -124,7 +124,7 @@ public class Main {
         double saldoInicial = scanner.nextDouble();
         scanner.nextLine();
 
-        //Cria um objeto "novaConta" de acordo com o tipo de conta e armazena em um array as contas criadas
+        //cria um objeto "novaConta" de acordo com o tipo de conta e armazena em um array as contas criadas
         Conta novaConta = null;
         switch (tipoDeConta) {
             case 1:
@@ -159,21 +159,21 @@ public class Main {
         }
     }
 
-    //Função para entrar em uma conta já existente
+    //método para entrar em conta já existente
     private static void entrarEmContaExistente() {
         if (contasCadastradas.isEmpty()) {
             System.out.println("Nenhuma conta cadastrada ainda. Crie uma conta primeiro.");
             return;
         }
 
-        //Busca no array de contas cadastradas através do email e da senha
+        //busca no array de contas cadastradas através do email e da senha
         System.out.println("\n===== ENTRAR EM CONTA =====");
         System.out.print("Email: ");
         String emailLogin = scanner.nextLine();
         System.out.print("Senha: ");
         String senhaLogin = scanner.nextLine();
 
-        //Lista as contas do usuário (já que um usuário pode ter mais de uma conta)
+        //lista as contas do usuário (já que um usuário pode ter mais de uma conta)
         List<Conta> contasDoUsuario = new ArrayList<>();
         for (Conta conta : contasCadastradas) {
             if (conta.getEmail().equals(emailLogin) && conta.getSenha().equals(senhaLogin)) {
@@ -210,8 +210,7 @@ public class Main {
         }
     }
 
-    //Função para exibir o Menu de Operações
-    //Obs: reutilização dos métodos de saque e depósito, pois dentro deles é implementado as lógicas de cobrança ou rendimento
+    //método para exibir menu de operações
     private static void menuOperacoesConta(Conta conta) {
         int opcao;
         do {

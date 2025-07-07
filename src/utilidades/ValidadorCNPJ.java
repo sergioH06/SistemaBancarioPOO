@@ -2,7 +2,7 @@ package utilidades;
 
 public class ValidadorCNPJ {
 
-    // Método para validar CNPJ
+    // método para validar CPF
     public static boolean validarCNPJ(String cnpj){
         String cnpjDigitos = cnpj.replaceAll("[^0-9]", "");
 
@@ -12,7 +12,7 @@ public class ValidadorCNPJ {
             return false;
         }
 
-        // Evita CNPJs com todos os dígitos iguais (frequentemente usados para testes)
+        // evita CNPJs com todos os dígitos iguais
         if (cnpjDigitos.matches("(\\d)\\1{13}")) {
             System.out.println("CNPJ inválido: Não pode ter todos os dígitos iguais.");
             return false;

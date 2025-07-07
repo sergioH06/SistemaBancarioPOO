@@ -7,6 +7,8 @@ import contas.ContaCorrente;
 
 public class Transferir {
     
+    //método de transferência entre contas criadas
+    //obs: reutilização dos métodos de saque e depósito, pois dentro deles é implementado as lógicas de cobrança ou rendimento
     public static void realizarTransferencia(Conta contaOrigem, String numeroContaDestino, double valorTransferencia, List<Conta> contasCadastradas) {
         if (valorTransferencia <= 0) {
             System.out.println("Valor de transferência inválido.");
