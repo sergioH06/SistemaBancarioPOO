@@ -6,12 +6,12 @@ O foco do projeto é a aplicação e consolidação de conceitos de Programaçã
 
 ## Como compilar e rodar:
 1. Certifique-se de ter o Java Development Kit (JDK) 8 ou superior instalado na sua máquina. 
-2. Atente-se à estrutura de pastas. Salve os arquivos em uma mesma pasta e compile-a.
+2. Atente-se à estrutura de pastas ou salve os arquivos em uma mesma pasta e compile-a.
 ```
 /
 |___src/
     |---app/
-        |---Main.java
+    |   |---Main.java
     |---cliente/
     |   |---CadastroPessoaFisica.java
     |   |---CadastroPessoaJuridica.java
@@ -26,7 +26,7 @@ O foco do projeto é a aplicação e consolidação de conceitos de Programaçã
     |   |---Transferir.java
     |---utilidades/
     |   |---ValidadorCNPJ.java
-    |   |---ValidadorCPF.java
+    |__ |---ValidadorCPF.java
     
                                                                                                 
 ```
