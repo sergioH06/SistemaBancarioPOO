@@ -49,4 +49,11 @@ public abstract class Cliente {
         System.out.println("CEP: " + CEP);
     }
 
+    public String getEmail(){
+        return Email;
+    }
+
+    public String getSenha(){
+        return Senha;
+    }
 }

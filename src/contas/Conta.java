@@ -24,7 +24,7 @@ public abstract class Conta {
 
     protected Object titular;
     protected double saldo;
-    protected LocalDate dataCriacao;
+    protected LocalDateTime dataCriacao;
 
     protected String email;
     protected String senha;
@@ -32,7 +32,7 @@ public abstract class Conta {
     public Conta(Object titular, double saldo, String email, String senha){
         this.titular = titular;
         this.saldo = saldo;
-        this.dataCriacao = LocalDate.now();
+        this.dataCriacao = LocalDateTime.now();
         this.numeroDaConta = geradorConta();
         this.email = email;
         this.senha = senha;
@@ -47,7 +47,7 @@ public abstract class Conta {
         return saldo;
     }
 
-    public LocalDate getDataCriacao(){
+    public LocalDateTime getDataCriacao(){
         return dataCriacao;
     }
 
