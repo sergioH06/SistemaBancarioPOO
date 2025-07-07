@@ -2,7 +2,7 @@ package utilidades;
 
 public class ValidadorCPF {
 
-    // Método estático para validar CPF
+    // Método para validar CPF
     public static boolean validarCPF(String cpf) {
         String cpfDigitos = cpf.replaceAll("[^0-9]", "");
 

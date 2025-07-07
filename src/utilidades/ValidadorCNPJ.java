@@ -2,7 +2,7 @@ package utilidades;
 
 public class ValidadorCNPJ {
 
-    // Método estático para validar CNPJ
+    // Método para validar CNPJ
     public static boolean validarCNPJ(String cnpj){
         String cnpjDigitos = cnpj.replaceAll("[^0-9]", "");
 

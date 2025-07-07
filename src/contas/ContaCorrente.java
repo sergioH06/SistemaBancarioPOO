@@ -141,7 +141,7 @@ public class ContaCorrente extends Conta {
     @Override
     public void depositar(double valor){
         super.depositar(valor);
-        cobrarTaxaManutencaoMensal(); // Atenção: Verifique se faz sentido cobrar taxa a cada depósito.
+        cobrarTaxaManutencaoMensal();
     }
     
     //Definição do Método de Geração de Extrato

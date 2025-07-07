@@ -2,7 +2,7 @@ package clientes;
 
 public class PessoaFisica extends Cliente {
 
-    //Construtor de Pessoa Física
+    //Construtor
     public PessoaFisica(String NomePessoa, String Nascimento, String CPF, String Email, String Senha, String Telefone,
             String Estado, String Cidade, String Bairro, String Rua, int Numero, String Complemento, String CEP) {
         super(NomePessoa, Nascimento, CPF, Email, Senha, Telefone, Estado, Cidade, Bairro, Rua, Numero, Complemento, CEP);
